@@ -2,11 +2,21 @@ name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
   schedule:
-    - cron: "53 00 8-14 22-28 * * [  $(date '+\%u') = 5  ]"
+    - cron: "32 1 * * 5"
     # - cron: "50 00 8-14,22-28 * * [ 'date +\\%u' = 5 ]"
 jobs:
+
+  determine-regression-day:
+    name: Determine Regression Day
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          [ $(expr $(date '+%W') % 2) = 0 ] || exit 1
+        shell: bash
+
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
+    needs: determine-regression-day
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
