@@ -2,8 +2,14 @@ name: GitHub Actions Demo
 
 on:
   schedule:
-    - cron: "45 19 * * *"
-    # - cron: "50 00 8-14,22-28 * * [ 'date +\\%u' = 5 ]"
+    - cron: "50 19 * * *"
+  
+  workflow_dispatch:
+    inputs:
+      schedule:
+        description: Schedule
+        required: true
+
 jobs:
 
   determine-regression-day:
