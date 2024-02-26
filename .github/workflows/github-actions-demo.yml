@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          [ $(expr $('date \+%W') \% 2) = 0 ] || exit 1
+          [ $(expr $('date +\%W') \% 2) = 0 ] || exit 1
         shell: bash
 
   Explore-GitHub-Actions:
