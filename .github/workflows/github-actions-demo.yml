@@ -2,7 +2,7 @@ name: GitHub Actions Demo
 
 on:
   schedule:
-    - cron: "15 22 8-14,22-28 * 1"
+    - cron: "18 16 * * 1"
   
   workflow_dispatch:
     inputs:
