@@ -2,7 +2,7 @@ name: GitHub Actions Demo
 
 on:
   schedule:
-    - cron: "10 18 * * 1"
+    - cron: "15 18 * * 2"
   
   workflow_dispatch:
     inputs:
@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          [ $(expr $(date '+%W') % 2) == 0 ] || exit 1
+          [ $(expr $(date '+%U') % 2) == 0 ] || exit 1
         shell: bash
 
   Explore-GitHub-Actions:
